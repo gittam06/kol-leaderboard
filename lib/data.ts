@@ -1,4 +1,4 @@
-import type { Kol, KolRow, Signal, SignalRow } from "./types";
+import type { Kol, KolRow, Signal } from "./types";
 
 const KOLS_URL =
   "https://gist.githubusercontent.com/Sandeepsorout01/4fef48fa4ddaa7551ad9fdeb5a0087e1/raw/kols.json";
@@ -50,32 +50,4 @@ export async function fetchLeaderboard(
       .reverse();
     return { ...kol, recentSignals, roiSeries };
   });
-}
-
-/**
- * Fetches every signal joined with its author, newest first. Powers the
- * signals feed and the analytics aggregates. Rejects on either request failing.
- */
-export async function fetchSignalFeed(
-  signal?: AbortSignal,
-): Promise<SignalRow[]> {
-  const [kols, signals] = await Promise.all([
-    fetchJson<Kol[]>(KOLS_URL, signal),
-    fetchJson<Signal[]>(SIGNALS_URL, signal),
-  ]);
-
-  const kolById = new Map(kols.map((k) => [k.id, k]));
-
-  return signals
-    .map((s): SignalRow => {
-      const kol = kolById.get(s.kol_id);
-      return {
-        ...s,
-        kol_handle: kol?.handle ?? "Unknown",
-        kol_name: kol?.name ?? "",
-        kol_avatar: kol?.avatar ?? "",
-        kol_verified: kol?.verified ?? false,
-      };
-    })
-    .sort(byCreatedDesc);
 }

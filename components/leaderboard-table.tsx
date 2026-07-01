@@ -64,6 +64,8 @@ export function LeaderboardTable({ rows }: { rows: KolRow[] }) {
 
   // Rows arrive already filtered and sorted; TanStack handles rendering only,
   // so table order and the mobile cards stay in lockstep.
+  // Known TanStack Table + react-hooks plugin limitation; safe to ignore here.
+  // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data: rows,
     columns: leaderboardColumns,

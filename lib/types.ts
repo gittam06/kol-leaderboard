@@ -45,11 +45,3 @@ export interface KolRow extends Kol {
   /** ROI values oldest→newest, for the sparkline column. */
   roiSeries: number[];
 }
-
-/** A signal joined with its author, for the signals feed and analytics. */
-export interface SignalRow extends Signal {
-  kol_handle: string;
-  kol_name: string;
-  kol_avatar: string;
-  kol_verified: boolean;
-}
