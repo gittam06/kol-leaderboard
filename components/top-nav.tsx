@@ -3,21 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Activity, Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS: { label: string; href: string }[] = [
   { label: "Leaderboard", href: "/" },
-  { label: "Signals", href: "/signals" },
-  { label: "Analytics", href: "/analytics" },
 ];
 
 function isActive(pathname: string, href: string): boolean {
@@ -62,12 +52,6 @@ function BrandMark() {
 
 export function TopNav() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-
-  // Close the mobile menu whenever the route changes.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   return (
     <header className="glass-bar sticky top-0 z-40">
@@ -76,8 +60,7 @@ export function TopNav() {
           <BrandMark />
         </Link>
 
-        {/* Desktop inline nav */}
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="flex items-center gap-1">
           {NAV_LINKS.map((link) => {
             const active = isActive(pathname, link.href);
             return (
@@ -109,50 +92,6 @@ export function TopNav() {
             </span>
           </span>
           <UtcClock />
-
-          {/* Mobile / tablet hamburger */}
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="lg:hidden"
-                aria-label="Open navigation menu"
-              >
-                <Menu className="size-5" aria-hidden />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-72 gap-0 p-0">
-              <SheetHeader className="border-b border-border">
-                <SheetTitle asChild>
-                  <span>
-                    <BrandMark />
-                  </span>
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="flex flex-col gap-1 p-3">
-                {NAV_LINKS.map((link) => {
-                  const active = isActive(pathname, link.href);
-                  return (
-                    <Link
-                      key={link.label}
-                      href={link.href}
-                      aria-current={active ? "page" : undefined}
-                      onClick={() => setOpen(false)}
-                      className={cn(
-                        "rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
-                        active
-                          ? "bg-secondary text-foreground"
-                          : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </nav>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </header>
