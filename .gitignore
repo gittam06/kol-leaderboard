@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ai tool configs
+.claude/
+CLAUDE.md
+AGENTS.md
+
+# assignment brief
+*.pdf
