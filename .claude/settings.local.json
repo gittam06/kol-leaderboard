@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(impeccable)",
+      "Bash(node *)",
+      "Bash(curl -sL \"https://gist.githubusercontent.com/Sandeepsorout01/4fef48fa4ddaa7551ad9fdeb5a0087e1/raw/kols.json\" -o kols.json)",
+      "Bash(curl -sL \"https://gist.githubusercontent.com/Sandeepsorout01/4fef48fa4ddaa7551ad9fdeb5a0087e1/raw/signals.json\" -o signals.json)",
+      "Bash(npm -v)",
+      "Bash(npm view *)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --turbopack --import-alias \"@/*\" --use-npm --yes)"
+    ]
+  }
+}
