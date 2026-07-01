@@ -7,7 +7,14 @@
       "Bash(curl -sL \"https://gist.githubusercontent.com/Sandeepsorout01/4fef48fa4ddaa7551ad9fdeb5a0087e1/raw/signals.json\" -o signals.json)",
       "Bash(npm -v)",
       "Bash(npm view *)",
-      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --turbopack --import-alias \"@/*\" --use-npm --yes)"
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --turbopack --import-alias \"@/*\" --use-npm --yes)",
+      "Bash(npx --yes shadcn@latest init -d --yes)",
+      "Bash(npx --yes shadcn@latest add table sheet input badge skeleton avatar dropdown-menu tooltip sonner --yes)",
+      "Bash(npm i *)",
+      "Bash(npx --yes shadcn@latest add button table sheet input badge skeleton avatar dropdown-menu tooltip sonner --overwrite --yes)",
+      "Bash(npm remove *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'chore: scaffold Next.js 16 + shadcn \\(Radix\\) + TanStack/Zustand/sonner stack *)"
     ]
   }
 }
